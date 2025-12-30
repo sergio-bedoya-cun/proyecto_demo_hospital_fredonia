@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Confirmación de Turno - Hospital Santa Lucía de Fredonia</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Material Symbols -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Theme Configuration -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#137fec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+</head>
+
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white min-h-screen flex flex-col overflow-x-hidden">
+  <!-- Navigation Bar -->
+  <header class="bg-white dark:bg-[#1a2632] border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50">
+    <div class="px-4 lg:px-10 py-4 max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="text-primary size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+          <img src="Logo.jfif" alt="Hospital Logo" style="height: 35px; margin-bottom: 0px;">
+        </div>
+        <h2 class="text-[#111418] dark:text-white text-xl font-bold leading-tight tracking-tight">Hospital Santa Lucía
+        </h2>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="hidden sm:flex flex-col text-right">
+          <span class="text-sm font-semibold">(604) 845 0000</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col items-center justify-start py-8 px-4 sm:px-6">
+    <div class="w-full max-w-3xl flex flex-col gap-6">
+      <!-- Success Status Header -->
+      <div class="flex flex-col items-center text-center space-y-4 py-6">
+        <div class="size-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-2">
+          <span class="material-symbols-outlined text-[48px] text-green-600 dark:text-green-400"
+            style="font-variation-settings: 'FILL' 1;">check_circle</span>
+        </div>
+        <h1 class="text-[#111418] dark:text-white text-3xl sm:text-4xl font-bold leading-tight">Turno asignado
+          correctamente</h1>
+        <p class="text-gray-600 dark:text-gray-300 text-lg max-w-lg">
+          Su solicitud fue registrada con éxito. El personal del hospital utilizará esta información para organizar la
+          atención médica.</span>.
+        </p>
+      </div>
+      <!-- Confirmation Card -->
+      <div
+        class="bg-white dark:bg-[#1a2632] rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
+
+        <!-- Card Header -->
+        <div
+          class="px-6 py-5 border-b border-gray-100 dark:border-gray-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gray-50/50 dark:bg-gray-800/30">
+          <div>
+            <h2 class="text-xl font-bold text-[#111418] dark:text-white flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary">event_available</span>
+              Detalles del turno
+            </h2>
+          </div>
+
+          <div class="flex gap-2">
+            <button
+              class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-primary bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors">
+              <span class="material-symbols-outlined text-lg">print</span>
+              <span class="hidden sm:inline">Imprimir</span>
+            </button>
+            <button
+              class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+              <span class="material-symbols-outlined text-lg">download</span>
+              <span class="hidden sm:inline">Descargar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card Body -->
+        <div class="p-6 sm:p-8 space-y-6">
+
+          <!-- Turn Number -->
+          <div
+            class="flex flex-col items-center sm:items-start bg-blue-50 dark:bg-blue-900/10 p-4 rounded-lg border border-blue-100 dark:border-blue-900/30 mb-2">
+            <span class="text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider mb-1">
+              Número de turno
+            </span>
+            <span id="refNumber" class="text-3xl font-bold text-primary tracking-tight">
+              #T-0000
+            </span>
+          </div>
+
+          <!-- Details Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
+
+            <!-- Name -->
+            <div class="flex flex-col gap-1">
+              <span class="text-gray-500 dark:text-gray-400 text-sm font-medium flex items-center gap-1">
+                <span class="material-symbols-outlined text-lg">person</span>
+                Nombre
+              </span>
+              <span id="name" class="text-[#111418] dark:text-white text-xl font-semibold">
+                --
+              </span>
+            </div>
+
+            <!-- Date -->
+            <div class="flex flex-col gap-1">
+              <span class="text-gray-500 dark:text-gray-400 text-sm font-medium flex items-center gap-1">
+                <span class="material-symbols-outlined text-lg">calendar_month</span>
+                Fecha
+              </span>
+              <span id="appointmentDate" class="text-[#111418] dark:text-white text-xl font-semibold">
+                --
+              </span>
+            </div>
+
+            <!-- Time -->
+            <div class="flex flex-col gap-1">
+              <span class="text-gray-500 dark:text-gray-400 text-sm font-medium flex items-center gap-1">
+                <span class="material-symbols-outlined text-lg">schedule</span>
+                Hora
+              </span>
+              <span id="appointmentTime" class="text-[#111418] dark:text-white text-xl font-semibold">
+                --
+              </span>
+            </div>
+
+            <!-- Doctor -->
+            <div class="flex flex-col gap-1">
+              <span class="text-gray-500 dark:text-gray-400 text-sm font-medium flex items-center gap-1">
+                <span class="material-symbols-outlined text-lg">stethoscope</span>
+                Doctor asignado
+              </span>
+              <span id="doctorName" class="text-[#111418] dark:text-white text-lg font-semibold">
+                --
+              </span>
+              <span id="doctorSpecialty" class="text-gray-500 dark:text-gray-400 text-sm">
+                --
+              </span>
+            </div>
+
+            <!-- Type -->
+            <div class="flex flex-col gap-1">
+              <span class="text-gray-500 dark:text-gray-400 text-sm font-medium flex items-center gap-1">
+                <span class="material-symbols-outlined text-lg">medical_services</span>
+                Tipo de consulta
+              </span>
+              <span id="appointmentReason" class="text-[#111418] dark:text-white text-lg font-semibold">
+                --
+              </span>
+            </div>
+
+            <!-- Priority -->
+            <div class="flex flex-col gap-2">
+              <span class="text-gray-500 dark:text-gray-400 text-sm font-medium flex items-center gap-1">
+                <span class="material-symbols-outlined text-lg">priority_high</span>
+                Prioridad
+              </span>
+              <div>
+                <span id="priorityBadge" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
+                  --
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="bg-gray-50 dark:bg-gray-800/50 p-6 border-t border-gray-100 dark:border-gray-700">
+          <h3 class="font-bold text-[#111418] dark:text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">info</span>
+            Indicaciones importantes
+          </h3>
+          <ul class="list-disc pl-5 space-y-1 text-gray-600 dark:text-gray-300 text-base">
+            <li>Preséntese 15 minutos antes de la hora estimada.</li>
+            <li>Lleve su documento de identidad.</li>
+            <li>El orden de atención puede variar según la prioridad médica.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Primary Actions -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4 pb-12 w-full">
+        <button onclick="window.location.href='index.html';"
+          class="w-full sm:w-auto min-w-[200px] h-14 bg-white dark:bg-[#1a2632] border border-gray-300 dark:border-gray-600 text-[#111418] dark:text-white rounded-xl text-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined">home</span>
+          Volver al inicio
+        </button>
+
+        <button onclick="localStorage.clear();"
+          class="w-full sm:w-auto min-w-[240px] h-14 bg-primary text-white rounded-xl text-lg font-bold shadow-lg shadow-primary/30 hover:bg-blue-600 transition-all flex items-center justify-center gap-2">
+          <span>Finalizar</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+  </main>
+  <footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
+    © 2025 Hospital Local de Fredonia – Proyecto DEMO
+  </footer>
+  <script>
+    const data = JSON.parse(localStorage.getItem("appointmentData"));
+
+    if (data) {
+      document.getElementById("refNumber").textContent = "#" + data.turno;
+      document.getElementById("name").textContent = data.name;
+      document.getElementById("appointmentDate").textContent = data.date;
+      document.getElementById("appointmentTime").textContent = data.time;
+      document.getElementById("appointmentReason").textContent = data.reasonText;
+      document.getElementById("doctorName").textContent = data.doctor.name;
+      document.getElementById("doctorSpecialty").textContent = data.doctor.specialty;
+
+      const priorityBadge = document.getElementById("priorityBadge");
+
+      if (data.urgency === "urgent") {
+        priorityBadge.textContent = "Urgente";
+        priorityBadge.className = "bg-red-100 text-red-800 px-3 py-1 rounded-full font-semibold";
+      }
+      else if (data.urgency === "soon") {
+        priorityBadge.textContent = "Próximamente";
+        priorityBadge.className = "bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-semibold";
+      }
+      else {
+        priorityBadge.textContent = "Rutina";
+        priorityBadge.className = "bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold";
+      }
+    }
+  </script>
+</body>
+</html>

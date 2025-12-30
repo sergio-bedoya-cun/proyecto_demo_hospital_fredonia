@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Administarción de Turnos - Hospital Santa Lucía de Fredonia</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Theme Configuration -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#137fec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"],
+            "body": ["Noto Sans", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white overflow-hidden">
+  <div class="flex h-screen w-full">
+
+    <aside
+      class="w-64 flex-shrink-0 flex flex-col bg-white dark:bg-[#1A2633] border-r border-[#e5e7eb] dark:border-[#2a3b4d] hidden md:flex">
+      <div class="p-6">
+        <div class="flex items-center gap-3">
+          <div class="size-12 rounded-full overflow-hidden">
+            <img src="Logo.jfif" alt="Logo Hospital Santa Lucía" class="w-full h-full object-cover">
+          </div>
+
+          <div class="flex flex-col">
+            <h1 class="text-[#111418] dark:text-white text-lg font-bold leading-normal">Hospital Santa Lucía</h1>
+            <p class="text-[#617589] dark:text-[#94a3b8] text-sm font-normal">Portal Administrativo</p>
+          </div>
+        </div>
+      </div>
+      <nav class="flex-1 overflow-y-auto px-4 py-2 flex flex-col gap-2">
+        <a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary" href="#">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span class="text-sm font-medium">Panel de control</span>
+        </a>
+        <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-[#617589] dark:text-[#94a3b8] hover:bg-[#f0f2f4] dark:hover:bg-[#2a3b4d] transition-colors"
+          href="#">
+          <span class="material-symbols-outlined">group</span>
+          <span class="text-sm font-medium">Pacientes</span>
+        </a>
+        <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-[#617589] dark:text-[#94a3b8] hover:bg-[#f0f2f4] dark:hover:bg-[#2a3b4d] transition-colors"
+          href="#">
+          <span class="material-symbols-outlined">stethoscope</span>
+          <span class="text-sm font-medium">Doctores</span>
+        </a>
+        <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-[#617589] dark:text-[#94a3b8] hover:bg-[#f0f2f4] dark:hover:bg-[#2a3b4d] transition-colors"
+          href="#">
+          <span class="material-symbols-outlined">calendar_month</span>
+          <span class="text-sm font-medium">Calendario</span>
+        </a>
+        <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-[#617589] dark:text-[#94a3b8] hover:bg-[#f0f2f4] dark:hover:bg-[#2a3b4d] transition-colors"
+          href="#">
+          <span class="material-symbols-outlined">settings</span>
+          <span class="text-sm font-medium">Configuración</span>
+        </a>
+      </nav>
+      <div class="p-4 border-t border-[#e5e7eb] dark:border-[#2a3b4d]">
+        <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-[#f0f2f4] dark:hover:bg-[#2a3b4d] cursor-pointer">
+          <div class="size-10 rounded-full bg-cover bg-center" data-alt="Portrait of an elderly female administrator"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2Cv2tSZooL3FpOK9W-nGqERLh_wQcceC3iY_yPAKqyOv5_zsQq07aW-sXBvWCQGpGiSXCqsny6itH7nMkqLtgOK-qb869sWxxll_nWOGnaf83KgKCYZE0B80flsVFjhljlJZOYGfiP3W-5qEfHiQvVHMccx37CCD74osFWTPj3SEofMFwqX8e8xHW5648jQXRi6pEzmTGVeWda2GfgHnJF5NRI0YQy8tF_CsJKePKPg1G2nxv-Cb0lB0Je_b8EJEFCuj1WF9ao9ph");'>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-sm font-medium text-[#111418] dark:text-white">Sara Rendón</p>
+            <p class="text-xs text-[#617589] dark:text-[#94a3b8]">Administrador</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+      <!-- Mobile Header (Visible only on small screens) -->
+      <div
+        class="md:hidden flex items-center justify-between p-4 bg-white dark:bg-[#1A2633] border-b border-[#e5e7eb] dark:border-[#2a3b4d]">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#111418] dark:text-white">menu</span>
+          <span class="font-bold text-lg dark:text-white">Hospital Santa Lucía</span>
+        </div>
+        <div class="size-12 rounded-full overflow-hidden">
+          <img src="Logo.jfif" alt="Logo Hospital Local de Fredonia" class="w-full h-full object-cover">
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-12">
+        <div class="max-w-6xl mx-auto flex flex-col gap-8">
+          <!-- Header Section -->
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div class="flex flex-col gap-2">
+              <h2 class="text-[#111418] dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight">
+                Cronograma del día</h2>
+              <p class="text-[#617589] dark:text-[#94a3b8] text-base font-normal">Gestiona las citas de hoy y la
+                prioridad de los pacientes.</p>
+              <p id="currentDate" class="text-primary font-medium mt-1"></p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
+              <!-- Search Bar -->
+              <div class="relative group">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <span class="material-symbols-outlined text-[#617589]">search</span>
+                </div>
+                <input
+                  class="block w-full sm:w-64 pl-10 pr-3 py-2.5 border-none rounded-lg bg-white dark:bg-[#1A2633] text-sm text-[#111418] dark:text-white placeholder-[#617589] focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm"
+                  placeholder="Buscar por ID o nombre..." type="text" />
+              </div>
+              <!-- New Appointment Button -->
+              <button onclick="window.location.href='form.html';"
+                class="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg shadow-md transition-all active:scale-95">
+                <span class="material-symbols-outlined text-[20px]">add</span>
+                <span class="text-sm font-bold tracking-wide">Crear turno</span>
+              </button>
+            </div>
+          </div>
+          <!-- Stats Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div
+              class="bg-white dark:bg-[#1A2633] p-6 rounded-xl border border-[#e5e7eb] dark:border-[#2a3b4d] shadow-sm flex flex-col gap-1">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[#617589] dark:text-[#94a3b8] text-sm font-medium uppercase tracking-wider">Citas
+                  totales</span>
+                <span
+                  class="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-full text-primary material-symbols-outlined text-sm">calendar_today</span>
+              </div>
+              <p class="text-[#111418] dark:text-white text-3xl font-bold">24</p>
+              <p class="text-xs text-green-600 font-medium flex items-center mt-2">
+                <span class="material-symbols-outlined text-sm mr-1">trending_up</span> +4 desde ayer
+              </p>
+            </div>
+            <div
+              class="bg-white dark:bg-[#1A2633] p-6 rounded-xl border border-[#e5e7eb] dark:border-[#2a3b4d] shadow-sm flex flex-col gap-1">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[#617589] dark:text-[#94a3b8] text-sm font-medium uppercase tracking-wider">Casos
+                  urgentes</span>
+                <span
+                  class="p-2 bg-red-50 dark:bg-red-900/20 rounded-full text-red-500 material-symbols-outlined text-sm">emergency_home</span>
+              </div>
+              <p class="text-[#111418] dark:text-white text-3xl font-bold">3</p>
+              <p class="text-xs text-[#617589] font-medium mt-2">Requieren atención inmediata</p>
+            </div>
+            <div
+              class="bg-white dark:bg-[#1A2633] p-6 rounded-xl border border-[#e5e7eb] dark:border-[#2a3b4d] shadow-sm flex flex-col gap-1">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[#617589] dark:text-[#94a3b8] text-sm font-medium uppercase tracking-wider">Médicos en
+                  servicio</span>
+                <span
+                  class="p-2 bg-green-50 dark:bg-green-900/20 rounded-full text-green-600 material-symbols-outlined text-sm">medical_services</span>
+              </div>
+              <p class="text-[#111418] dark:text-white text-3xl font-bold">4</p>
+              <div class="flex -space-x-2 mt-2">
+                <div class="size-6 rounded-full border-2 border-white dark:border-[#1A2633] bg-cover"
+                  data-alt="Doctor portrait 1"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBGz4cipZfp3V6oq8M1bwURiFVmg-jZLkb0WHccS2vES4-qybTIv0ErTOmIruOIzwPMH9T590FInIqr4HO0WEyPjbXfFUbm0zkeI2UDwFdjTgtHkUHvOplBuoe_NuC9rwp_R_JFMkpIE8ThkHdheW_wqz7zQhboTLqlX-QY-rx9Y58feMoJxR9HnwZacCSUwM-Ps8CEoOdGUAsR_PbH95c5PRxfBV_8Hfn3cIKkpXt3EYCTzrjECqJwMvDqUHW8Eigx9MhrTML2EGj");'>
+                </div>
+                <div class="size-6 rounded-full border-2 border-white dark:border-[#1A2633] bg-cover"
+                  data-alt="Doctor portrait 2"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1NMkPgMmT05pUbSAqSI4rT7x2DZcWzvrcnfZgBJY4QbWMDcxShauN3pmNleHDMhtbcbIjuhqv6SLU6PO6AZbYSa2pUVl1JC6PlV-iP2J0iy3l8Lmc3yApthrJ_2Vk692bXuJ5TUkVemVaRd5wb2s9q33-RV3n9Kdyzjaa7nQlA0KO393QHCw-FZM68aB77nt-QrzS0K64h2O6zxZTIkXmBcqZZI5_pxw1BDFlrXZw0rA7hmqgLKod08xlQboqFDhW-A8ZgcQRFH-g");'>
+                </div>
+                <div class="size-6 rounded-full border-2 border-white dark:border-[#1A2633] bg-cover"
+                  data-alt="Doctor portrait 3"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB58ks6JbeeIvwyQ95SCGHjEOmfjR118ZFY87wl3TgAQslvqkhoAy5q4pV-EAp_QSjzfBtQd5qZwRNXQVwdh2HmgTWZWd3jI3tGhv2-zMGfqyEvQCtWE4dye5YONyI4AtjqM7Yc3QVK5bSDJf4OLJdCSk4dhJDIvc3t1XaOoSm1ET5WuoPDMd1eTU3RPaXSZJLp0Fp3e9JSK4pGAueIcZddEKOoD80cpwDHQzeLY7XvFUpXlD7HRTaCsMEu5ZBbnPtdf_4NHOgN-h50");'>
+                </div>
+                <div
+                  class="size-6 rounded-full border-2 border-white dark:border-[#1A2633] bg-gray-200 flex items-center justify-center text-[10px] text-gray-600 font-bold">
+                  +1</div>
+              </div>
+            </div>
+          </div>
+          <!-- Appointment Table -->
+          <div
+            class="bg-white dark:bg-[#1A2633] rounded-xl border border-[#e5e7eb] dark:border-[#2a3b4d] shadow-sm overflow-hidden flex flex-col">
+            <div class="p-6 border-b border-[#e5e7eb] dark:border-[#2a3b4d] flex justify-between items-center">
+              <h3 class="text-lg font-bold text-[#111418] dark:text-white">Próximas citas</h3>
+              <button class="text-primary text-sm font-medium hover:underline">Ver todas</button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm whitespace-nowrap">
+                <thead
+                  class="bg-[#f8f9fa] dark:bg-[#131d27] text-[#617589] dark:text-[#94a3b8] uppercase tracking-wider font-medium">
+                  <tr>
+                    <th class="px-6 py-4">Nombre del paciente &amp; Edad</th>
+                    <th class="px-6 py-4">Hora</th>
+                    <th class="px-6 py-4">Doctor</th>
+                    <th class="px-6 py-4">Prioridad</th>
+                    <th class="px-6 py-4">Estado</th>
+                    <th class="px-6 py-4 text-right">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="appointmentsTable" class="divide-y divide-[#e5e7eb] dark:divide-[#2a3b4d]">
+                  <!-- Row 1 -->
+                  <tr class="hover:bg-[#f0f2f4] dark:hover:bg-[#202e3b] transition-colors group">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <div class="flex flex-col">
+                          <span class="font-bold text-[#111418] dark:text-white">Martha Rojas</span>
+                          <span class="text-xs text-[#617589]">Edad: 78</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-2 text-[#111418] dark:text-white font-medium">
+                        <span class="material-symbols-outlined text-base text-[#617589]">schedule</span>
+                        09:30 a.m.
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-[#617589] dark:text-[#94a3b8]">Dr. Hernández</td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50">
+                        <span class="bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"></span>
+                        Urgente
+                      </span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        Pendiente
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                      <div
+                        class="flex items-center justify-end gap-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                        <button
+                          class="p-2 rounded-lg hover:bg-white dark:hover:bg-[#2a3b4d] text-primary hover:shadow-sm border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#3e5063] transition-all"
+                          title="Editar cita">
+                          <span class="material-symbols-outlined text-xl">edit</span>
+                        </button>
+                        <button
+                          class="p-2 rounded-lg hover:bg-white dark:hover:bg-[#2a3b4d] text-red-500 hover:shadow-sm border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#3e5063] transition-all"
+                          title="Cancelar Cita">
+                          <span class="material-symbols-outlined text-xl">close</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- Row 2 -->
+                  <tr class="hover:bg-[#f0f2f4] dark:hover:bg-[#202e3b] transition-colors group">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <div class="flex flex-col">
+                          <span class="font-bold text-[#111418] dark:text-white">Roberto</span>
+                          <span class="text-xs text-[#617589]">Age: 82</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-2 text-[#111418] dark:text-white font-medium">
+                        <span class="material-symbols-outlined text-base text-[#617589]">schedule</span>
+                        10:15 a.m.
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-[#617589] dark:text-[#94a3b8]">Dr. González</td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50">
+                        Rutina
+                      </span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        Pendiente
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                      <div
+                        class="flex items-center justify-end gap-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                        <button
+                          class="p-2 rounded-lg hover:bg-white dark:hover:bg-[#2a3b4d] text-primary hover:shadow-sm border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#3e5063] transition-all"
+                          title="Edit Appointment">
+                          <span class="material-symbols-outlined text-xl">edit</span>
+                        </button>
+                        <button
+                          class="p-2 rounded-lg hover:bg-white dark:hover:bg-[#2a3b4d] text-red-500 hover:shadow-sm border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#3e5063] transition-all"
+                          title="Cancel Appointment">
+                          <span class="material-symbols-outlined text-xl">close</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- Row 3 -->
+                  <tr class="hover:bg-[#f0f2f4] dark:hover:bg-[#202e3b] transition-colors group">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <div class="flex flex-col">
+                          <span class="font-bold text-[#111418] dark:text-white">Alicia Romero</span>
+                          <span class="text-xs text-[#617589]">Age: 35</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-2 text-[#111418] dark:text-white font-medium">
+                        <span class="material-symbols-outlined text-base text-[#617589]">schedule</span>
+                        8:00 a.m.
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-[#617589] dark:text-[#94a3b8]">Dr. Hernández</td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50">
+                        Rutina
+                      </span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">
+                        Atendido
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                      <div
+                        class="flex items-center justify-end gap-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                        <button
+                          class="p-2 rounded-lg hover:bg-white dark:hover:bg-[#2a3b4d] text-primary hover:shadow-sm border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#3e5063] transition-all"
+                          title="Edit Appointment">
+                          <span class="material-symbols-outlined text-xl">edit</span>
+                        </button>
+                        <button
+                          class="p-2 rounded-lg hover:bg-white dark:hover:bg-[#2a3b4d] text-red-500 hover:shadow-sm border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#3e5063] transition-all"
+                          title="Cancel Appointment">
+                          <span class="material-symbols-outlined text-xl">close</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- Row 4 -->
+                  <tr class="hover:bg-[#f0f2f4] dark:hover:bg-[#202e3b] transition-colors group">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <div class="flex flex-col">
+                          <span class="font-bold text-[#111418] dark:text-white">Samuel López</span>
+                          <span class="text-xs text-[#617589]">Age: 21</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-2 text-[#111418] dark:text-white font-medium">
+                        <span class="material-symbols-outlined text-base text-[#617589]">schedule</span>
+                        11:45 a.m.
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 text-[#617589] dark:text-[#94a3b8]">Dr. Ramírez</td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50">
+                        Rutina
+                      </span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                        Pendiente
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                      <div
+                        class="flex items-center justify-end gap-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                        <button
+                          class="p-2 rounded-lg hover:bg-white dark:hover:bg-[#2a3b4d] text-primary hover:shadow-sm border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#3e5063] transition-all"
+                          title="Edit Appointment">
+                          <span class="material-symbols-outlined text-xl">edit</span>
+                        </button>
+                        <button
+                          class="p-2 rounded-lg hover:bg-white dark:hover:bg-[#2a3b4d] text-red-500 hover:shadow-sm border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#3e5063] transition-all"
+                          title="Cancel Appointment">
+                          <span class="material-symbols-outlined text-xl">close</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="p-4 border-t border-[#e5e7eb] dark:border-[#2a3b4d] flex justify-between items-center bg-[#fafafa] dark:bg-[#131d27]">
+              <p class="text-sm text-[#617589]">Mostrando 5 de 24 citas</p>
+              <div class="flex gap-2">
+                <button
+                  class="px-3 py-1 text-sm font-medium rounded text-[#617589] hover:bg-white dark:hover:bg-[#2a3b4d] border border-transparent hover:border-[#e5e7eb] dark:hover:border-[#2a3b4d] disabled:opacity-50">Anterior</button>
+                <button
+                  class="px-3 py-1 text-sm font-medium rounded text-[#111418] dark:text-white bg-white dark:bg-[#2a3b4d] border border-[#e5e7eb] dark:border-[#2a3b4d] shadow-sm">Siguiente</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const today = new Date();
+
+    const formattedDate = today.toLocaleDateString("es-CO", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+
+    document.getElementById("currentDate").textContent = formattedDate;
+  </script>
+
+  <script>
+    const tableBody = document.getElementById("appointmentsTable");
+    const data = JSON.parse(localStorage.getItem("appointmentData"));
+
+    if (data) {
+      const priorityStyles = {
+        routine: {
+          label: "Rutina",
+          class: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+        },
+        soon: {
+          label: "Próximamente",
+          class: "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200"
+        },
+        urgent: {
+          label: "Urgente",
+          class: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+        }
+      };
+
+      const priority = priorityStyles[data.urgency];
+
+      const row = document.createElement("tr");
+      row.className = "hover:bg-[#f0f2f4] dark:hover:bg-[#202e3b] transition-colors group";
+
+      row.innerHTML = `
+      <td class="px-6 py-4">
+        <div class="flex flex-col">
+          <span class="font-bold text-[#111418] dark:text-white">${data.name}</span>
+          <span class="text-xs text-[#617589]">Edad: ${data.age}</span>
+        </div>
+      </td>
+
+      <td class="px-6 py-4">
+        <div class="flex items-center gap-2 text-[#111418] dark:text-white font-medium">
+          <span class="material-symbols-outlined text-base text-[#617589]">schedule</span>
+          ${data.time}
+        </div>
+      </td>
+
+      <td class="px-6 py-4 text-[#617589] dark:text-[#94a3b8]">
+        <div class="flex flex-col">
+          <span class="font-bold text-[#111418] dark:text-white">${data.doctor.name}</span>
+          <span class="text-xs text-[#617589]">${data.doctor.specialty}</span>
+        </div>
+      </td>
+
+      <td class="px-6 py-4">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold ${priority.class}">
+          ${priority.label}
+        </span>
+      </td>
+
+      <td class="px-6 py-4">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold
+          bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+          Pendiente
+        </span>
+      </td>
+
+      <td class="px-6 py-4 text-right">
+        <div class="flex items-center justify-end gap-2 opacity-50 group-hover:opacity-100 transition-opacity">
+          <button class="p-2 rounded-lg hover:bg-white dark:hover:bg-[#2a3b4d] text-primary">
+            <span class="material-symbols-outlined text-xl">edit</span>
+          </button>
+          <button class="p-2 rounded-lg hover:bg-white dark:hover:bg-[#2a3b4d] text-red-500">
+            <span class="material-symbols-outlined text-xl">close</span>
+          </button>
+        </div>
+      </td>
+    `;
+
+      tableBody.prepend(row);
+    }
+  </script>
+</body>
+</html>

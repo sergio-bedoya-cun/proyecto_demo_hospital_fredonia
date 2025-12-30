@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Solicitud de Turno Médico - Hospital Santa Lucía de Fredonia</title>
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700;900&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Theme Configuration -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#137fec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    /* Custom styles for oversized inputs for better accessibility */
+    .form-input-lg {
+      height: 3.5rem;
+      /* 56px */
+      font-size: 1.125rem;
+      /* 18px */
+    }
+
+    /* High contrast focus ring for accessibility */
+    .form-input:focus,
+    .form-select:focus {
+      box-shadow: 0 0 0 4px rgba(19, 127, 236, 0.25);
+      border-color: #137fec
+    }
+
+    /* Ensuring select arrows are large enough */
+    select {
+      background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBmrfx6qb59mkZPjWwOUJDSBGrsLuhxiod35Uck25Lcfvp-nZxWXiIjnD9xNXC9EvUoSnyUi6aXExzH0GnajhOFKwuC7dt01f27TO6mg19k6iYiv5JT1xMDTTbYQ_r4fDfyDHXmzCn8-lnF36sUx0oYQ525-eFX8wOcMcXDJwzZci18ZBZxZAb6HNsrBJM_Knh1DtLfMrYH8q2plTL7LZJMRs4xQlm-YlMVe1fvUtnUyxv85Dyk5E6D55ZczcRERukR_JkDPqAxkTKZ);
+      background-position: right 0.75rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact
+    }
+  </style>
+</head>
+
+<body
+  class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display min-h-screen flex flex-col">
+  <!-- Top Navigation Bar -->
+  <header
+    class="sticky top-0 z-50 bg-white dark:bg-[#1a2632] border-b border-[#f0f2f4] dark:border-[#2a3844] shadow-sm">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-10 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="text-primary size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+          <img src="Logo.jfif" alt="Hospital Logo" style="height: 35px; margin-bottom: 0px;">
+        </div>
+        <h2 class="text-[#111418] dark:text-white text-xl font-bold leading-tight tracking-tight">Hospital Santa Lucía
+        </h2>
+      </div>
+      <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+        <nav class="flex items-center gap-9">
+          <a class="text-[#111418] dark:text-gray-200 text-lg font-medium hover:text-primary transition-colors"
+            href="index.html">Inicio</a>
+          <a class="text-[#111418] dark:text-gray-200 text-lg font-medium hover:text-primary transition-colors"
+            href="#">Servicios</a>
+          <a class="text-[#111418] dark:text-gray-200 text-lg font-medium hover:text-primary transition-colors"
+            href="#">Soporte</a>
+        </nav>
+        <button
+          class="bg-primary hover:bg-blue-600 text-white text-base font-bold h-12 px-6 rounded-lg transition-colors flex items-center gap-2">
+          <span class="material-symbols-outlined">person</span>
+          <span>Iniciar sesión</span>
+        </button>
+      </div>
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden p-2 text-gray-600 dark:text-gray-300">
+        <span class="material-symbols-outlined text-3xl">menu</span>
+      </button>
+    </div>
+  </header>
+  <!-- Main Content Area -->
+  <main class="flex-grow flex justify-center py-10 px-4 md:px-10">
+    <div class="w-full max-w-[960px] flex flex-col gap-8">
+      <!-- Page Heading & Instructions -->
+      <div
+        class="bg-white dark:bg-[#1a2632] rounded-xl p-6 md:p-8 shadow-sm border border-gray-100 dark:border-[#2a3844]">
+        <div class="flex flex-col md:flex-row justify-between gap-6 items-start">
+          <div class="flex flex-col gap-4 max-w-2xl">
+            <h1 class="text-[#111418] dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight">
+              Reserve su visita al hospital
+            </h1>
+            <p class="text-[#617589] dark:text-gray-400 text-lg leading-relaxed">
+              Por favor, rellene los campos a continuación para solicitar una cita. Nuestro personal revisará su
+              solicitud y le llamará para confirmarla.
+            </p>
+          </div>
+          <!-- Help Box -->
+          <div
+            class="flex items-center gap-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-900/30 p-4 rounded-lg min-w-[280px]">
+            <div class="bg-yellow-100 dark:bg-yellow-800/40 p-3 rounded-full text-yellow-700 dark:text-yellow-400">
+              <span class="material-symbols-outlined text-3xl">support_agent</span>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-[#111418] dark:text-gray-200 uppercase tracking-wide">¿Necesita ayuda?
+              </p>
+              <p class="text-xl font-bold text-primary">Llámenos (604)8401101</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Progress Bar -->
+      <div
+        class="bg-white dark:bg-[#1a2632] rounded-xl p-6 md:p-8 shadow-sm border border-gray-100 dark:border-[#2a3844]">
+        <div class="flex flex-col gap-3">
+          <div class="flex justify-between items-end">
+            <span class="text-[#111418] dark:text-white text-lg font-bold">Paso 1 de 2: Complete los detalles</span>
+            <span class="text-[#617589] dark:text-gray-400 text-sm font-medium">Siguiente: Confirmar</span>
+          </div>
+          <div class="w-full bg-[#dbe0e6] dark:bg-gray-700 rounded-full h-4">
+            <div class="bg-primary h-4 rounded-full transition-all duration-500 ease-out" style="width: 50%"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Main Form -->
+      <form
+        class="bg-white dark:bg-[#1a2632] rounded-xl p-6 md:p-8 shadow-sm border border-gray-100 dark:border-[#2a3844] flex flex-col gap-8">
+        <!-- Personal Information Section -->
+        <div class="flex flex-col gap-6">
+          <div class="flex items-center gap-3 border-b border-gray-100 dark:border-gray-700 pb-2">
+            <span class="material-symbols-outlined text-primary text-2xl">person</span>
+            <h3 class="text-xl font-bold text-[#111418] dark:text-white">Información del paciente</h3>
+          </div>
+          <!-- Full Name -->
+          <label class="flex flex-col gap-2">
+            <span class="text-[#111418] dark:text-gray-200 text-lg font-medium">Nombre completo</span>
+            <input id="fullName"
+              class="form-input form-input-lg w-full rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-[#23303e] text-[#111418] dark:text-white px-4 placeholder:text-[#617589] dark:placeholder:text-gray-500"
+              placeholder="Por ejemplo, Juan Pérez" type="text" />
+          </label>
+          <!-- Age -->
+          <label class="flex flex-col gap-2">
+            <span class="text-[#111418] dark:text-gray-200 text-lg font-medium">Edad</span>
+            <input id="age"
+              class="form-input form-input-lg w-full rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-[#23303e] text-[#111418] dark:text-white px-4 placeholder:text-[#617589] dark:placeholder:text-gray-500"
+              placeholder="Por ejemplo, 25" type="text" />
+          </label>
+          <!-- Phone Number -->
+          <label class="flex flex-col gap-2">
+            <span class="text-[#111418] dark:text-gray-200 text-lg font-medium">Número de teléfono</span>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                <span class="material-symbols-outlined">call</span>
+              </span>
+              <input id="phone"
+                class="form-input form-input-lg w-full rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-[#23303e] text-[#111418] dark:text-white pl-12 pr-4 placeholder:text-[#617589] dark:placeholder:text-gray-500"
+                placeholder="Teléfono o celular" type="tel" />
+            </div>
+            <p class="text-sm text-[#617589] dark:text-gray-400">Llamaremos a este número para confirmar su cita.</p>
+          </label>
+          <!-- ID -->
+          <label class="flex flex-col gap-2">
+            <span class="text-[#111418] dark:text-gray-200 text-lg font-medium">Tipo de documento</span>
+            <select
+              class="form-select w-full h-14 rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-[#23303e] text-[#111418] dark:text-white px-4 text-lg">
+              <option disabled="" selected="" value="">Seleccione su tipo de documento...</option>
+              <option value="checkup">Trajeta de identidad</option>
+              <option value="specialist">Cédula de ciudadania</option>
+            </select>
+          </label>
+          <!-- Number ID -->
+          <label class="flex flex-col gap-2">
+            <span class="text-[#111418] dark:text-gray-200 text-lg font-medium">Número de documento</span>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+              </span>
+              <input
+                class="form-input form-input-lg w-full rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-[#23303e] text-[#111418] dark:text-white px-4 placeholder:text-[#617589] dark:placeholder:text-gray-500"
+                placeholder="Ingrese su número de identificación" type="text" />
+            </div>
+          </label>
+          <!-- Appointment Details Section -->
+          <div class="flex flex-col gap-6 mt-4">
+            <div class="flex items-center gap-3 border-b border-gray-100 dark:border-gray-700 pb-2">
+              <span class="material-symbols-outlined text-primary text-2xl">medical_services</span>
+              <h3 class="text-xl font-bold text-[#111418] dark:text-white">Detalles de la cita</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Reason for Visit -->
+              <label class="flex flex-col gap-2">
+                <span class="text-[#111418] dark:text-gray-200 text-lg font-medium">Motivo de la visita</span>
+                <select id="reason"
+                  class="form-select w-full h-14 rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-[#23303e] text-[#111418] dark:text-white px-4 text-lg">
+                  <option disabled="" selected="" value="">Seleccione un motivo...</option>
+                  <option value="checkup">Chequeo general</option>
+                  <option value="specialist">Visita a especialista</option>
+                  <option value="lab">Análisis de laboratorio / Análisis de sangre</option>
+                  <option value="prescription">Renovación de recetas</option>
+                  <option value="other">Otro</option>
+                </select>
+              </label>
+              <!-- Urgency -->
+              <label class="flex flex-col gap-2">
+                <span class="text-[#111418] dark:text-gray-200 text-lg font-medium">¿Qué tan urgente es esto?</span>
+                <select id="urgency"
+                  class="form-select w-full h-14 rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-[#23303e] text-[#111418] dark:text-white px-4 text-lg">
+                  <option selected="" value="routine">Rutina (Próximo turno disponible)</option>
+                  <option value="soon">Próximamente (Esta semana)</option>
+                  <option value="urgent">Urgente (Hoy/Mañana)</option>
+                </select>
+              </label>
+            </div>
+            <!-- Preferred Date -->
+            <label class="flex flex-col gap-2">
+              <span class="text-[#111418] dark:text-gray-200 text-lg font-medium">Fecha preferida (opcional)</span>
+              <input
+                class="form-input form-input-lg w-full md:w-1/2 rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-[#23303e] text-[#111418] dark:text-white px-4"
+                type="date" />
+            </label>
+            <!-- Additional Notes -->
+            <label class="flex flex-col gap-2">
+              <span class="text-[#111418] dark:text-gray-200 text-lg font-medium">Notas adicionales (opcional)</span>
+              <textarea
+                class="form-textarea w-full rounded-lg border border-[#dbe0e6] dark:border-gray-600 bg-white dark:bg-[#23303e] text-[#111418] dark:text-white p-4 text-lg min-h-[120px]"
+                placeholder="Por favor describa cualquier síntoma o necesidad específica..."></textarea>
+            </label>
+          </div>
+          <!-- Action Button -->
+          <div class="pt-6 border-t border-gray-100 dark:border-gray-700 mt-2">
+            <button id="btnSolicitar"
+              class="w-full bg-primary hover:bg-blue-600 text-white text-xl font-bold rounded-lg h-16 shadow-lg shadow-blue-200 dark:shadow-none transition-all transform active:scale-[0.99] flex items-center justify-center gap-3"
+              type="button">
+              <span>Asignar turno</span>
+              <span class="material-symbols-outlined text-2xl">arrow_forward</span>
+            </button>
+            <p class="text-center mt-4 text-[#617589] dark:text-gray-400 text-sm">
+              Al hacer clic en este botón, acepta nuestra política de privacidad.
+            </p>
+          </div>
+      </form>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
+    © 2025 Hospital Local de Fredonia – DEMO
+  </footer>
+
+  <script>
+    document.querySelector("#btnSolicitar").addEventListener("click", () => {
+
+      // Form Data
+      const data = {
+        name: document.getElementById("fullName").value,
+        age: document.getElementById("age").value,
+        phone: document.getElementById("phone").value,
+        reason: document.getElementById("reason").value,
+        urgency: document.getElementById("urgency").value,
+        reasonText: document.getElementById("reason").options[document.getElementById("reason").selectedIndex].text
+      };
+
+      // Appoinment Number
+      data.turno = "T-" + Math.floor(1 + Math.random() * 50);
+
+      // Doctors
+      const doctors = {
+        checkup: [
+          { name: "Dra. Sara Rendón", specialty: "Medicina general" },
+          { name: "Dr. John Jaime", specialty: "Medicina general" }
+        ],
+        specialist: [
+          { name: "Dra. Laura Gómez", specialty: "Cardióloga" },
+          { name: "Dr. Miguel Henao", specialty: "Neurolólogo" }
+        ],
+        lab: [
+          { name: "Dra. Andrea Ruiz", specialty: "Laboratorio" },
+          { name: "Dr. Roberto Hernández", specialty: "Patología" }
+        ],
+        prescription: [
+          { name: "Dra. Eliana Bermúdez", specialty: "Medicina interna" }
+        ],
+        other: [
+          { name: "Dr. David Mejía", specialty: "Medicina general" }
+        ]
+      };
+
+      const selectedDoctors = doctors[data.reason] || doctors.other;
+      data.doctor = selectedDoctors[Math.floor(Math.random() * selectedDoctors.length)];
+
+      // Priority Time
+      function generateTime(urgency) {
+        const today = new Date();
+
+        if (urgency === "urgent") {
+          today.setHours(9 + Math.floor(Math.random() * 3)); // 9–11 AM
+        } else if (urgency === "soon") {
+          today.setDate(today.getDate() + 2);
+          today.setHours(10 + Math.floor(Math.random() * 4)); // 10–2 PM
+        } else {
+          today.setDate(today.getDate() + 5);
+          today.setHours(8 + Math.floor(Math.random() * 6)); // 8–2 PM
+        }
+
+        today.setMinutes(0);
+        return today;
+      }
+
+      const appointmentDate = generateTime(data.urgency);
+      data.date = appointmentDate.toLocaleDateString("es-CO", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+      data.time = appointmentDate.toLocaleTimeString("es-CO", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+      });
+
+      // Save Data
+      const allAppointments = JSON.parse(localStorage.getItem("appointments") || "[]");
+      allAppointments.push(data);
+      localStorage.setItem("appointments", JSON.stringify(allAppointments));
+
+      localStorage.setItem("appointmentData", JSON.stringify(data));
+
+      // Redirection
+      window.location.href = "result.html";
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hospital Santa Lucía de Fredonia - Gestión de Turnos</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;900&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 1,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d141b] dark:text-white">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <!-- Emergency Banner -->
+        <div class="bg-red-50 border-b border-red-100 dark:bg-red-900/20 dark:border-red-900/50 w-full">
+            <div class="px-4 py-3 text-center">
+                <p
+                    class="text-red-700 dark:text-red-300 text-sm md:text-base font-bold leading-normal flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">warning</span>
+                    EN CASO DE EMERGENCIA MÉDICA, ACUDA DE INMEDIATO AL SERVICIO DE URGENCIAS
+                </p>
+            </div>
+        </div>
+        <!-- Header -->
+        <header class="w-full bg-white dark:bg-[#1a2632] border-b border-[#e7edf3] dark:border-[#2a3642]">
+            <div class="max-w-[1280px] mx-auto px-4 sm:px-8 py-5 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full text-primary">
+                        <img src="Logo.jfif" alt="Hospital Logo" style="height: 50px; margin-bottom: 9px;">
+                    </div>
+                    <div>
+                        <h1 class="text-xl md:text-2xl font-bold leading-tight tracking-tight">Hospital Santa Lucía</h1>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium hidden sm:block">Gestión
+                            digital de turnos médicos</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a class="hidden md:flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-primary font-medium transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">info</span>
+                        Nosotros
+                    </a>
+                    <a class="flex items-center gap-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 px-4 py-2 rounded-lg transition-colors group"
+                        href="tel:5551234567">
+                        <span
+                            class="material-symbols-outlined text-slate-600 dark:text-slate-300 group-hover:text-primary">call</span>
+                        <span class="font-bold text-slate-900 dark:text-white">(604)8401101</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1 w-full max-w-[1280px] mx-auto px-4 sm:px-8 py-8 md:py-12 flex flex-col gap-10">
+            <!-- Hero Section -->
+            <div class="w-full @container">
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-white dark:bg-[#1a2632] rounded-2xl shadow-sm border border-[#e7edf3] dark:border-[#2a3642] overflow-hidden">
+                    <div class="p-8 md:p-12 flex flex-col justify-center gap-6 order-2 lg:order-1">
+                        <h2
+                            class="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.2] text-[#0d141b] dark:text-white">
+                            Solicite su turno<br /> sin hacer filas
+                        </h2>
+                        <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-lg">
+                            Este sistema permite a los habitantes de Fredonia solicitar su turno médico de manera
+                            sencilla, reduciendo tiempos de espera y aglomeraciones.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <a class="inline-flex items-center justify-center h-14 px-8 bg-primary hover:bg-primary/90 text-white text-lg font-bold rounded-xl shadow-md transition-all transform hover:scale-[1.02]"
+                                href="#appointment-options">
+                                Solicitar turno
+                            </a>
+                            <a class="inline-flex items-center justify-center h-14 px-8 bg-white dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-white text-lg font-bold rounded-xl hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"
+                                href="tel:5551234567">
+                                Llamar ahora
+                            </a>
+                        </div>
+                    </div>
+                    <div class="h-64 lg:h-full min-h-[400px] w-full bg-cover bg-center order-1 lg:order-2 relative"
+                        data-alt="A friendly doctor holding hands with an elderly patient in a bright room"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCHLsYX-m020Edu-qJfZk8rVEY0DiVk399rylxijilSC8Mt17P27tlAQffbYk3guA8b4xyUz54EsjVr5_aKBdbNxJ081q963j7wbjAfd5GNgF_j5mPG4MscYJwsU1EX0xYZxS0x2fMflhjBFXKJk110tj4szDsaM2NMiyzkZ-c9MXO7iOgtmaZQWpIfZPrlcDWE4v7bQtfv8QgEJgqYM0OFQu94PhYt9JTIZl2PZj6MRlPFmo_NoexRjbCmKWC2P9APIvHmg1DzPP9h");'>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent lg:bg-gradient-to-l">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Action Section -->
+            <div class="flex flex-col gap-6 py-4" id="appointment-options">
+                <div class="text-center max-w-2xl mx-auto mb-6">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-3">¿Qué te gustaría hacer?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg">Seleccione uno de los botones que aparecen
+                        para continuar.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto w-full">
+                    <!-- Patient Card -->
+                    <a class="group relative flex flex-col items-center text-center p-8 md:p-10 rounded-2xl bg-white dark:bg-[#1a2632] border-2 border-[#e7edf3] dark:border-[#2a3642] hover:border-primary dark:hover:border-primary shadow-sm hover:shadow-xl transition-all duration-300"
+                        href="form.html">
+                        <div
+                            class="w-20 h-20 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-symbols-outlined text-primary text-[48px]">calendar_month</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-[#0d141b] dark:text-white mb-3">Solicitar cita</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6">
+                            Para pacientes que requieren citas médicas o consulta de laborario. No para emergencias.
+                        </p>
+                        <span
+                            class="mt-auto inline-flex items-center gap-2 text-primary font-bold text-lg group-hover:underline underline-offset-4">
+                            Agendar turno <span class="material-symbols-outlined">arrow_forward</span>
+                        </span>
+                    </a>
+                    <!-- Admin Card -->
+                    <a class="group relative flex flex-col items-center text-center p-8 md:p-10 rounded-2xl bg-slate-50 dark:bg-[#15202b] border-2 border-slate-200 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 shadow-sm hover:shadow-lg transition-all duration-300 opacity-90 hover:opacity-100"
+                        href="admin.html">
+                        <div
+                            class="w-20 h-20 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <span
+                                class="material-symbols-outlined text-slate-600 dark:text-slate-300 text-[48px]">admin_panel_settings</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-[#0d141b] dark:text-white mb-3">Administrador</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-6">
+                            Acceso exclusivo para el personal del hospital.
+                        </p>
+                        <span
+                            class="mt-auto inline-flex items-center gap-2 text-slate-700 dark:text-slate-300 font-bold text-lg group-hover:underline underline-offset-4">
+                            Sesión administrativa <span class="material-symbols-outlined">lock</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <!-- Help/Contact Section -->
+            <div
+                class="bg-blue-50 dark:bg-[#1a2632] rounded-2xl p-8 md:p-12 text-center border border-blue-100 dark:border-[#2a3642]">
+                <h3 class="text-2xl font-bold mb-4 text-[#0d141b] dark:text-white">¿Necesita ayuda para programar?</h3>
+                <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-xl mx-auto">
+                    Si tiene problemas para utilizar el sistema en línea, nuestro personal de recepción estará encantado
+                    de ayudarle por teléfono.
+                </p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <div class="flex items-center gap-3 bg-white dark:bg-slate-800 px-6 py-4 rounded-xl shadow-sm">
+                        <span class="material-symbols-outlined text-primary text-3xl">phone_in_talk</span>
+                        <div class="text-left">
+                            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Llame a recepción</div>
+                            <div class="text-xl font-bold text-[#0d141b] dark:text-white">(604)8401101</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white dark:bg-slate-800 px-6 py-4 rounded-xl shadow-sm">
+                        <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+                        <div class="text-left">
+                            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Visítanos</div>
+                            <div class="text-xl font-bold text-[#0d141b] dark:text-white">Calle 69 # 50 - 220 sector el
+                                Eden</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+        <footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
+            © 2025 Hospital Local de Fredonia – Proyecto DEMO
+        </footer>
+    </div>
+</body>
+
+</html>
